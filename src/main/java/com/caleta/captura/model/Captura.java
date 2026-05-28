@@ -31,7 +31,7 @@ public class Captura {
 
     public Captura() {}
 
-    public Captura(Long id, Long especieId, Double kilos, LocalDate fecha) {
+    public Captura(Long id,Long especieId, Double kilos, LocalDate fecha) {
         this.id = id;
         this.especieId = especieId;
         this.kilos = kilos;

@@ -9,6 +9,7 @@ public class CapturaMapper {
     //CREATE
     public static Captura toModel(CreateCapturaRequest request){
         return new Captura(
+            0L,
             request.especieId(),
             request.kilos(),
             request.fecha()
@@ -16,8 +17,9 @@ public class CapturaMapper {
     }
 
     //UPDATE
-    public static Captura toModel(Long Id, UpdateCapturaRequest request){
+    public static Captura toModel(Long id, UpdateCapturaRequest request){
         return new Captura(
+            id,
             request.especieId(),
             request.kilos(),
             request.fecha()
