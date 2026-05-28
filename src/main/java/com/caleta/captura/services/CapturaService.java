@@ -2,7 +2,6 @@ package com.caleta.captura.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -12,11 +11,14 @@ import com.caleta.captura.repository.CapturaRepository;
 
 @Service
 public class CapturaService {
-    @Autowired
-    private CapturaRepository capturaRepository;
 
-    @Autowired
-    private WebClient especieWebClient;
+    private final CapturaRepository capturaRepository;
+    private final WebClient especieWebClient;
+
+    public CapturaService(CapturaRepository capturaRepository, WebClient especieWebClient) {
+        this.capturaRepository = capturaRepository;
+        this.especieWebClient = especieWebClient;
+    }
 
     public List<Captura> getCapturas(){
         return capturaRepository.findAll();
@@ -24,6 +26,10 @@ public class CapturaService {
 
     public Captura getCapturaById(Long id){
         return capturaRepository.findById(id).orElse(null);
+    }
+
+    public List<Captura> getByEspecie(Long especieId){
+        return capturaRepository.selectPorEspecieId(especieId);
     }
 
     public String deleteCaptura(Long id){
