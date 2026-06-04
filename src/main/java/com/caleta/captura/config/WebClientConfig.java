@@ -8,8 +8,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
     @Bean
-    public WebClient especieWebClient(WebClient.Builder builder){
-        return builder.baseUrl("http://localhost:8084").build();
+    public WebClient especieWebClient() {
+        return WebClient.builder()
+            .baseUrl("http://localhost:8084")
+            .build();
     }
 
 }
