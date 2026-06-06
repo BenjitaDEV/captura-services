@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.caleta.captura.dto.CreateCapturaRequest;
 import com.caleta.captura.dto.UpdateCapturaRequest;
 import com.caleta.captura.exception.ResourceNotFoundException;
-import com.caleta.captura.mapper.CapturaMapper;
 import com.caleta.captura.model.Captura;
 import com.caleta.captura.services.CapturaService;
 
@@ -59,7 +58,7 @@ public class CapturaController {
     //CREATE
     @PostMapping
     public ResponseEntity<Captura> crearCaptura(@Valid @RequestBody CreateCapturaRequest request){
-        Captura CapturaNueva = capturaService.saveCaptura(CapturaMapper.toModel(request));
+        Captura CapturaNueva = capturaService.saveCaptura(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(CapturaNueva);
     }
@@ -68,7 +67,7 @@ public class CapturaController {
     @PutMapping("/{id}")
     public ResponseEntity<Captura> actualizarCaptura(@PathVariable Long id, @Valid @RequestBody UpdateCapturaRequest request){
 
-        Captura CapturaAct = capturaService.updateCaptura(id, CapturaMapper.toModel(id, request));
+        Captura CapturaAct = capturaService.updateCaptura(id, request);
         return ResponseEntity.ok(CapturaAct);
     }
 

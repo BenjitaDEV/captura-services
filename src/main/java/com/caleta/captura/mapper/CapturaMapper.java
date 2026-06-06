@@ -9,7 +9,7 @@ public class CapturaMapper {
     //CREATE
     public static Captura toModel(CreateCapturaRequest request){
         return new Captura(
-            0L,
+            null,
             request.especieId(),
             request.kilos(),
             request.fecha()
