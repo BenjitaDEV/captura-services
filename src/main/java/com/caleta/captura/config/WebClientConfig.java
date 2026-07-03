@@ -10,7 +10,7 @@ public class WebClientConfig {
     @Bean
     public WebClient especieWebClient() {
         return WebClient.builder()
-            .baseUrl("http://localhost:8084/api/especies")
+            .baseUrl("https://especie-services.onrender.com")
             .build();
     }
 
